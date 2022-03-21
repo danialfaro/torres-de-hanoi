@@ -13,6 +13,14 @@ namespace Torres_de_Hanoi
         public int Valor { get; set; }
         public String Valor { get; set; }
         */
+        public int Valor;
+
+        public Disco(int valor) { Valor = valor; }
+
+        public override string ToString()
+        {
+            return Valor.ToString();
+        }
 
     }
 }
