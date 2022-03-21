@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Torres_de_Hanoi
 {
@@ -70,6 +66,28 @@ namespace Torres_de_Hanoi
                     if (fin.Size == n) break;
                     if (mover_disco(aux, fin)) m++;
                 }
+            }
+            return m;
+        }
+
+        public int recursivo()
+        {
+            int m = algoritmoRecursivo(n);
+            return m;
+        }
+
+        private int algoritmoRecursivo(int n)
+        {
+            int m = 0;
+            if (n == 1)
+            {
+                if (mover_disco(ini, fin)) m++;
+            }
+            else
+            {
+                m += algoritmoRecursivo(n - 1);
+                if (mover_disco(ini, fin)) m++;
+                m += algoritmoRecursivo(n - 1);
             }
             return m;
         }
