@@ -52,7 +52,6 @@ namespace Torres_de_Hanoi
                     if (mover_disco(ini, fin)) m++;
                     if (fin.Size == n) break;
                     if (mover_disco(ini, aux)) m++;
-                    if (fin.Size == n) break;
                     if (mover_disco(aux, fin)) m++;
                 }
             }
@@ -61,7 +60,6 @@ namespace Torres_de_Hanoi
                 while (fin.Size < n)
                 {
                     if (mover_disco(ini, aux)) m++;
-                    if (fin.Size == n) break;
                     if (mover_disco(ini, fin)) m++;
                     if (fin.Size == n) break;
                     if (mover_disco(aux, fin)) m++;
@@ -72,11 +70,11 @@ namespace Torres_de_Hanoi
 
         public int recursivo()
         {
-            int m = algoritmoRecursivo(n);
+            int m = algoritmoRecursivo(n, ini, fin, aux);
             return m;
         }
 
-        private int algoritmoRecursivo(int n)
+        private int algoritmoRecursivo(int n, Pila ini, Pila fin, Pila aux)
         {
             int m = 0;
             if (n == 1)
@@ -85,9 +83,9 @@ namespace Torres_de_Hanoi
             }
             else
             {
-                m += algoritmoRecursivo(n - 1);
+                m += algoritmoRecursivo(n - 1, ini, aux, fin);
                 if (mover_disco(ini, fin)) m++;
-                m += algoritmoRecursivo(n - 1);
+                m += algoritmoRecursivo(n - 1, aux, fin, ini);
             }
             return m;
         }
